@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<ui:composition template="/Templates/Template.xhtml">
+	<ui:define name="conteudo">
+		<h2>Listagem de exercicios</h2>
+		<h:form style="margin-top: 30px">
+			<h:dataTable value="#{exercicioBean.exercicios}" var="exercicio" 
+			styleClass="table table-striped table-hover">
+			<h:column>
+				<f:facet name="header">Id</f:facet>
+				<h:outputText value="#{exercicio.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nome:</f:facet>
+				<h:outputText value="#{exercicio.nome}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Numero de repetições:</f:facet>
+				<h:outputText value="#{exercicio.numRepeticoes}" /> 
+			</h:column>
+			<h:column>
+				<f:facet name="header">Peso na Maquina:</f:facet>
+				<h:outputText value="#{exercicio.peso}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Series de repetições</f:facet>
+				<h:outputText value="#{exercicio.series}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Remover:</f:facet>
+				<h:commandButton action="#{exercicioBean.remover(exercicio)}"
+					value="Remover" styleClass="btn btn-danger" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Alterar</f:facet>
+				<h:commandButton action="#{exercicioBean.detalhar()}" value="Alterar"
+					 styleClass="btn btn-warning" >
+					<f:param name="idExercicio" value="#{exercicio.id}" />
+				</h:commandButton>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+	</ui:define>	
+</ui:composition> 
+</html>

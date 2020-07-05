@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<ui:composition template="/Templates/Template.xhtml">
+	<ui:define name="conteudo">
+		<h:form>
+			<h2>Cadastrar Usuario</h2>
+			<h:outputLabel value="CPF:" />
+			<h:inputText value="#{usuarioBean.usuario.cpf}" />
+			<br/>
+			
+			<h:outputLabel value="Senha:" />
+			<h:inputSecret value="#{usuarioBean.usuario.senha}" />
+			<br/>
+			
+			<h:outputLabel value="Nome:" />
+			<h:inputText value="#{usuarioBean.usuario.nome}" />
+			<br/>
+			
+			<h:outputLabel value="Sobrenome:" />
+			<h:inputText value="#{usuarioBean.usuario.sobrenome}" />
+			<br/>
+
+			<h:selectOneMenu value="#{usuarioBean.usuario.modulo}"
+				styleClass="form-control col-4" converter="omnifaces.SelectItemsIndexConverter">
+				<f:selectItem itemValue="" itemLabel="  -- SELECIONE O MODULO --  "/>
+				<f:selectItems value="#{usuarioBean.modulos}" 
+					var="modulo" itemLabel="#{modulo.nome}"
+					itemValue="#{modulo}"/>
+			</h:selectOneMenu>			
+			
+			<h:commandButton action="#{usuarioBean.cadastrar()}" value="Cadastrar" />
+			
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

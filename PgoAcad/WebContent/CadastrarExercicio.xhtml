@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<ui:composition template="/Templates/Template.xhtml">
+	<ui:define name="conteudo">
+		<h:form>
+			<h2>Cadastrar Exercicio</h2>
+			<h:outputLabel value="Nome do Exercicio:" />
+			<h:inputText id="txtNome" value="#{exercicioBean.exercicio.nome}" 
+					required="true" requiredMessage="Campo obrigatório!"/>
+			<h:message for="txtNome" styleClass="text-danger"/>
+			<br/>
+
+			<h:selectOneMenu value="#{exercicioBean.exercicio.grupoMuscular}"
+				styleClass="form-control col-4" converter="omnifaces.SelectItemsIndexConverter" >
+				<f:selectItem itemValue="" itemLabel="  -- SELECIONE --  "/>
+				<f:selectItems value="#{exercicioBean.grupos}" 
+					var="GrupoMuscular" itemLabel="#{GrupoMuscular.nome}" 
+					itemValue="#{GrupoMuscular}"/>
+			</h:selectOneMenu>
+
+			<h:commandButton action="#{exercicioBean.cadastrar()}" value="Cadastrar" />
+		</h:form>
+	</ui:define>	
+</ui:composition>
+</html>

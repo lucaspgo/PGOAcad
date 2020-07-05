@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<h:body>
+	<h:form>
+		<h2>Alterar dados do Usuario</h2>
+		<h:inputHidden value="#{usuarioBean.usuario.id}" />
+		<h:outputLabel value="CPF:" />
+		<h:inputText value="#{usuarioBean.usuario.cpf}" />
+		<br />
+		<h:outputLabel value="Senha:" />
+		<h:inputText value="#{usuarioBean.usuario.senha}" />
+		<br />
+		<h:outputLabel value="Nome:" />
+		<h:inputText value="#{usuarioBean.usuario.nome}" />
+		<br />
+		<h:outputLabel value="Sobrenome:" />
+		<h:inputText value="#{usuarioBean.usuario.sobrenome}" />
+		<br />
+		<h:commandButton action="#{usuarioBean.alterar()}" value="Salvar" />
+		<br />
+	</h:form>
+</h:body>
+</html>

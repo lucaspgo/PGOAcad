@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<ui:composition template="/Templates/Template.xhtml">
+	<ui:define name="conteudo">
+		<h:form>
+			<h2>Cadastrar Ficha de Treino</h2>
+			
+			<h:selectOneMenu value="#{fichaBean.fichaTreino.usuario}"
+				styleClass="form-control col-4" converter="omnifaces.SelectItemsIndexConverter" >
+				<f:selectItem itemValue="" itemLabel="  -- SELECIONE O ALUNO --  "/>
+				<f:selectItems value="#{fichaBean.usuarios}" 
+					var="usuario" itemLabel="#{usuario.nome}" 
+					itemValue="#{usuario}"/>
+			</h:selectOneMenu>
+			
+			
+			<h:outputLabel value="Nome do Exercicio:" />
+			<h:inputText id="txtNome" value="#{fichaBean.fichaTreino.nome}" 
+					required="true" requiredMessage="Campo obrigatório!"/>
+			<h:message for="txtNome" styleClass="text-danger"/>
+			<br/>
+			
+			<h:outputLabel value="Numero de repetições:" />
+			<h:inputText id="txtNR" value="#{fichaBean.fichaTreino.numRepeticoes}" 
+					required="true" requiredMessage="Campo obrigatório!"/>
+			<h:message for="txtNR" styleClass="text-danger"/>
+			<br/>
+			
+			<h:outputLabel value="Numero de Series:" />
+			<h:inputText id="txtNS" value="#{fichaBean.fichaTreino.series}" 
+					required="true" requiredMessage="Campo obrigatório!"/>
+			<h:message for="txtNS" styleClass="text-danger"/>
+			<br/>
+			
+			<h:outputLabel value="Peso para se utilizar:" />
+			<h:inputText id="txtP" value="#{fichaBean.fichaTreino.peso}" 
+					required="true" requiredMessage="Campo obrigatório!"/>
+			<h:message for="txtP" styleClass="text-danger"/>
+			<br/>
+			
+			<h:outputLabel value="Semana do Treino:" />
+			<h:inputText id="txtST" value="#{fichaBean.fichaTreino.semanaExercicio}" 
+					required="true" requiredMessage="Campo obrigatório!"/>
+			<h:message for="txtST" styleClass="text-danger"/>
+			<br/>
+
+			<h:selectOneMenu value="#{fichaBean.fichaTreino.grupoMuscular}"
+				styleClass="form-control col-4" converter="omnifaces.SelectItemsIndexConverter" >
+				<f:selectItem itemValue="" itemLabel="  -- SELECIONE O GRUPO MUSCULAR --  "/>
+				<f:selectItems value="#{fichaBean.grupos}" 
+					var="GrupoMuscular" itemLabel="#{GrupoMuscular.nome}" 
+					itemValue="#{GrupoMuscular}"/>
+			</h:selectOneMenu>
+
+			<h:commandButton styleClass="btn btn-primary" action="#{fichaBean.cadastrar()}" value="Cadastrar" />
+		</h:form>
+	</ui:define>	
+</ui:composition>
+</html>
